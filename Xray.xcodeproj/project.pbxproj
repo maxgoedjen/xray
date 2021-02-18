@@ -31,6 +31,13 @@
 			remoteGlobalIDString = 5096E77625DE436100730FB9;
 			remoteInfo = XrayKit;
 		};
+		5096E79925DE548E00730FB9 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 50A7FA2A25DE0FB700AFB2DF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5096E77625DE436100730FB9;
+			remoteInfo = XrayKit;
+		};
 		50A7FA5825DE0FEC00AFB2DF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 50A7FA2A25DE0FB700AFB2DF /* Project object */;
@@ -262,6 +269,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				5096E79A25DE548E00730FB9 /* PBXTargetDependency */,
 			);
 			name = XrayExtension;
 			productName = XrayExtension;
@@ -368,6 +376,11 @@
 			isa = PBXTargetDependency;
 			target = 5096E77625DE436100730FB9 /* XrayKit */;
 			targetProxy = 5096E78A25DE436200730FB9 /* PBXContainerItemProxy */;
+		};
+		5096E79A25DE548E00730FB9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5096E77625DE436100730FB9 /* XrayKit */;
+			targetProxy = 5096E79925DE548E00730FB9 /* PBXContainerItemProxy */;
 		};
 		50A7FA5925DE0FEC00AFB2DF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;

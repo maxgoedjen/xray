@@ -16,7 +16,12 @@ class SourceEditorCommand: NSObject, XCSourceEditorCommand {
             for selection in selections {
                 var fullText = ""
                 if selection.start.line == selection.end.line {
-                    fullText.append(lines[selection.start.line][selection.start.column..<selection.end.column])
+                    if selection.start.column == selection.end.column {
+                        // No lines selected, append full document
+                        fullText.append(invocation.buffer.completeBuffer)
+                    } else {
+                        fullText.append(lines[selection.start.line][selection.start.column..<selection.end.column])
+                    }
                 } else {
                     fullText.append(lines[selection.start.line][selection.start.column...])
                     for line in lines[selection.start.line+1..<selection.end.line] {
