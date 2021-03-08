@@ -21,10 +21,10 @@ public enum Padding: String, Identifiable, Equatable, CaseIterable {
 
 public class Configuration {
 
-    @AppStorage("colors") public var colors = Colors.midnight
-    @AppStorage("background") public var background = true
-    @AppStorage("darkMode") public var darkMode = DarkMode.match
-    @AppStorage("padding") public var padding = Padding.thirtyTwo
+    @AppStorage("colors", store: defaults) public var colors = Colors.midnight
+    @AppStorage("background", store: defaults) public var background = true
+    @AppStorage("darkMode", store: defaults) public var darkMode = DarkMode.match
+    @AppStorage("padding", store: defaults) public var padding = Padding.thirtyTwo
 
     public init() {}
 
@@ -45,5 +45,12 @@ extension Configuration {
             return "false"
         }
     }
+
+}
+
+
+extension Configuration {
+
+    private static let defaults = UserDefaults(suiteName: "Z72PRUAWF6.xray")
 
 }
