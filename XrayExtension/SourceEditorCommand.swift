@@ -65,15 +65,17 @@ extension SourceEditorCommand {
 
     func create(snippet: String) throws {
         guard let encoded = snippet.data(using: .utf8)?.base64EncodedString() else { throw CreationError() }
+        let urlencoded = encoded.replacingOccurrences(of: "+", with: "%2B")
         var components = URLComponents(string: "https://ray.so")
         components?.queryItems = [
-            URLQueryItem(name: "code", value: encoded),
             URLQueryItem(name: "colors", value: configuration.colors.rawValue),
             URLQueryItem(name: "background", value: configuration.background.description),
             URLQueryItem(name: "darkMode", value: configuration.resolvedDarkMode),
             URLQueryItem(name: "padding", value: configuration.padding.rawValue),
         ]
-        guard let url = components?.url else { throw CreationError() }
+        // QueryItems messes up urlencoded strings.
+        guard let partial = components?.url?.absoluteString,
+              let url = URL(string: partial + "&code=\(urlencoded)") else { throw CreationError() }
         NSWorkspace.shared.open(url)
     }
 
